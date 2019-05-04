@@ -24,3 +24,11 @@ steps:
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Visual Studio Enterprise – MPN(2ac1a31e-222f-47c4-ab4a-ae41aa42f516)'
+    appType: 'webApp'
+    WebAppName: 'cazteedev'
+    packageForLinux: '$(System.ArtifactsDirectory)/**/*.zip'
