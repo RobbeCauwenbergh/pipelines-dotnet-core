@@ -25,10 +25,10 @@ steps:
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
 
-- task: AzureRmWebAppDeployment@4
+- task: PublishBuildArtifacts@1
   inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Visual Studio Enterprise – MPN(2ac1a31e-222f-47c4-ab4a-ae41aa42f516)'
-    appType: 'webApp'
-    WebAppName: 'cazteedev'
-    package: '$(System.ArtifactsDirectory)/**/*.zip'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+
+    
